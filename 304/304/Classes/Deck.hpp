@@ -17,11 +17,14 @@ using namespace std;
 
 class Deck {
 public:
-    void prepare();
-    void shuffle();
+    void prepare(void);
+    void shuffle(void);
+    void printCards(void);
     
 private:
+    int const kCardCount = 24;
     vector<Card> _cards;
+    void addCards(Suit suit);
     
 };
 #endif /* Deck_hpp */

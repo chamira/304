@@ -10,26 +10,33 @@
 #define Card_hpp
 
 #include <stdio.h>
+#include <string>
 
-enum Suit {
+using namespace std;
+
+typedef enum {
     spades, hearts, diamonds, clubs
-};
+} Suit;
 
-enum Rank {
+typedef enum {
     jack=30,nine=20,ace=11,ten=10,king=3,queen=2
-};
+} Rank;
 
 class Card {
 
 public:
     Card(Suit suit, Rank rank);
     Suit getSuit();
+    string getSuitName();
     Rank getRank();
     int getValue();
+    string getValueString();
+    void toString();
     
 private:
     Suit _suit;
     Rank _rank;
+    
     
 };
 

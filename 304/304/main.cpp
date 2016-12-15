@@ -7,9 +7,15 @@
 //
 
 #include <iostream>
+#include "Deck.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    std::cout << "304 game!\n\n";
+    
+    Deck deck;
+    deck.prepare();
+    deck.shuffle();
+    deck.printCards();
     return 0;
 }

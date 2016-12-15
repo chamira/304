@@ -7,6 +7,7 @@
 //
 
 #include "Card.hpp"
+#include <iostream>
 
 Card::Card(Suit suit, Rank rank) {
  
@@ -17,6 +18,31 @@ Card::Card(Suit suit, Rank rank) {
 
 Suit Card::getSuit() {
     return _suit;
+}
+
+string Card::getSuitName() {
+    
+    string s = "";
+    
+    switch (_suit) {
+        case hearts:
+            s = "Hearts";
+            break;
+        case spades:
+            s = "Spades";
+            break;
+        case diamonds:
+            s = "Diamonds";
+            break;
+        case clubs:
+            s = "Clubs";
+            break;
+        default:
+            break;
+    }
+    
+    return s;
+    
 }
 
 Rank Card::getRank() {
@@ -51,4 +77,38 @@ int Card::getValue() {
     
     return v;
     
+}
+
+string Card::getValueString() {
+    
+    string s = "";
+    switch (_rank) {
+        case jack:
+            s = "Jack(30)";
+            break;
+        case nine:
+            s = "9(20)";
+            break;
+        case ace:
+            s ="Ace(11)";
+            break;
+        case ten:
+            s = "Ten(10)";
+            break;
+        case king:
+            s = "King(3)";
+            break;
+        case queen:
+            s = "Queen(2)";
+            break;
+        default:
+            break;
+    }
+    
+    return s;
+    
+}
+
+void Card::toString() {
+    std::cout << "Card:" << getSuitName() << " Rank:" << getValueString() << std::endl;
 }
