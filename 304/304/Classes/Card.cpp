@@ -109,6 +109,55 @@ string Card::getValueString() {
     
 }
 
+unsigned long Card::getHash() {
+    
+    unsigned long s = 0;
+    
+    switch (_suit) {
+        case hearts:
+            s = 100000;
+            break;
+        case spades:
+            s = 200000;
+            break;
+        case diamonds:
+            s = 300000;
+            break;
+        case clubs:
+            s = 400000;
+            break;
+        default:
+            break;
+    }
+    
+    switch (_rank) {
+        case jack:
+            s += 1;
+            break;
+        case nine:
+            s += 2;
+            break;
+        case ace:
+            s += 3;
+            break;
+        case ten:
+            s += 4;
+            break;
+        case king:
+            s += 5;
+            break;
+        case queen:
+            s += 6;
+            break;
+        default:
+            break;
+    }
+    
+    return s;
+    
+}
+
+
 void Card::toString() {
-    std::cout << "Card:" << getSuitName() << " Rank:" << getValueString() << std::endl;
+    std::cout << "Card:" << getSuitName() << " Rank:" << getValueString() << " hash:"<< getHash() << std::endl;
 }

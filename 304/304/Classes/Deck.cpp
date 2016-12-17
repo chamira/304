@@ -14,7 +14,24 @@
 #include <cstdlib>      // std::rand, std::srand
 
 // random generator function:
-int myrandom (int i) { return std::rand()%i;}
+
+void _shuffle(vector<Card> &a) {
+    size_t n = a.size();
+    if (n <= 1){
+        return;
+    }
+    
+    for (int i = 0; i < n - 1; i ++) {
+    
+        int j = arc4random_uniform(uint32_t (n - 1)) + 1;
+        
+        if (i == j) {
+            continue;
+        }
+        swap(a[i], a[j]);
+        
+    }
+}
 
 void Deck::addCards(Suit suit) {
 
@@ -50,7 +67,9 @@ void Deck::prepare(void) {
 }
 
 void Deck::shuffle(void) {
-    std::random_shuffle(_cards.begin(),_cards.end(), myrandom);
+    //std::random_shuffle(_cards.begin(),_cards.end(), myrandom);
+    _shuffle(_cards);
+    
 }
 
 void Deck::printCards() {
@@ -61,3 +80,4 @@ void Deck::printCards() {
         c.toString();
     }
 }
+

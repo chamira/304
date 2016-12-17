@@ -32,6 +32,7 @@ public:
     int getValue();
     string getValueString();
     void toString();
+    unsigned long getHash();
     
 private:
     Suit _suit;
