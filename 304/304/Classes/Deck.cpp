@@ -13,8 +13,11 @@
 #include <iostream>
 #include <cstdlib>      // std::rand, std::srand
 
-// random generator function:
 
+Deck::~Deck() {
+    
+}
+// random generator function:
 void _shuffle(vector<Card> &a) {
     size_t n = a.size();
     if (n <= 1){
@@ -29,7 +32,6 @@ void _shuffle(vector<Card> &a) {
             continue;
         }
         swap(a[i], a[j]);
-        
     }
 }
 
@@ -75,6 +77,26 @@ void Deck::printCards() {
         Card c = _cards[i];
         c.toString();
     }
+}
+
+vector<Card> Deck::draw(int numberOfCards) {
+    
+    size_t size = _cards.size();
+    if (size == 0 || size < numberOfCards) {
+        return vector<Card>();
+    }
+    
+    vector<Card> cards;
+    for (int i=0;i<numberOfCards;i++){
+        Card c = _cards[i];
+        cards.push_back(c);
+    }
+    
+    _cards.erase(_cards.begin(), _cards.begin() + numberOfCards);
+    
+    std::cout << "Cards vector contains:" << _cards.size() << endl;
+    return cards;
+    
 }
 
 void Deck::toString() {

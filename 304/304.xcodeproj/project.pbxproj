@@ -81,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				980866091DF4CFF600DB5925 /* main.cpp */,
+				98DAD1FA1E054BF200D227BF /* Game.cpp */,
+				98DAD1FB1E054BF200D227BF /* Game.hpp */,
 				98DAD2001E05733000D227BF /* Object.cpp */,
 				98DAD2011E05733000D227BF /* Object.hpp */,
 				980866101DF4D07800DB5925 /* Card.cpp */,
@@ -93,8 +95,6 @@
 				98DAD1FE1E054C6800D227BF /* Team.hpp */,
 				98DAD1F71E054BDD00D227BF /* PlayingRound.cpp */,
 				98DAD1F81E054BDD00D227BF /* PlayingRound.hpp */,
-				98DAD1FA1E054BF200D227BF /* Game.cpp */,
-				98DAD1FB1E054BF200D227BF /* Game.hpp */,
 			);
 			path = 304;
 			sourceTree = "<group>";

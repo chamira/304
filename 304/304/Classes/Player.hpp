@@ -11,7 +11,9 @@
 
 #include <stdio.h>
 #include <string>
-#include "Object.hpp"
+#include <vector>
+
+#include "Card.hpp"
 
 using namespace std;
 
@@ -21,9 +23,15 @@ public:
     Player(string name);
     ~Player();
     string getName();
+    void addToHand(Card card);
+    void addToHand(vector<Card> cards);
+    vector<Card> getHand();
+    
     void toString();
     
 private:
     string _name;
+    vector<Card> _hand;
+    
 };
 #endif /* Player_hpp */

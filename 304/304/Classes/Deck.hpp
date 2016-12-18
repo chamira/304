@@ -17,9 +17,11 @@ using namespace std;
 
 class Deck {
 public:
+    ~Deck();
     void prepare();
     void shuffle();
     void printCards();
+    vector<Card> draw(int numberOfCards);
     void toString();
     
 private:

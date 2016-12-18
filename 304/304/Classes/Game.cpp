@@ -26,14 +26,27 @@ Game::~Game() {
 void Game::prepare() {
 
     _deck->prepare();
+    
+//    _deck->printCards();
+    
     _deck->shuffle();
+    
+    _deck->printCards();
     
 }
 
 void Game::start() {
-
     prepare();
+    firstDraw();
     
+}
+
+void Game::firstDraw() {
+    drawCards();
+}
+
+void Game::secondDraw() {
+    drawCards();
 }
 
 Deck * Game::getDeck() {
@@ -49,7 +62,27 @@ Team * Game::getTeam2() {
 }
 
 void Game::toString() {
-    
     _team1->toString();
     _team2->toString();
+}
+
+
+//Private
+void Game::drawCards() {
+    vector<Card> d1 = _deck->draw(kNumberOfCardsPerDraw);
+    _team1->getPlayer1()->addToHand(d1);
+    
+    vector<Card> d2 = _deck->draw(kNumberOfCardsPerDraw);
+    _team1->getPlayer2()->addToHand(d2);
+    
+    vector<Card> d3 = _deck->draw(kNumberOfCardsPerDraw);
+    _team2->getPlayer1()->addToHand(d3);
+    
+    vector<Card> d4 = _deck->draw(kNumberOfCardsPerDraw);
+    _team2->getPlayer2()->addToHand(d4);
+    
+    _team1->getPlayer1()->toString();
+    _team1->getPlayer2()->toString();
+    _team2->getPlayer1()->toString();
+    _team2->getPlayer2()->toString();
 }

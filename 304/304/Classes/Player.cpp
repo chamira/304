@@ -8,6 +8,7 @@
 
 #include "Player.hpp"
 #include <iostream>
+#include <string>
 
 Player::Player(string name) {
     _name = name;
@@ -20,6 +21,36 @@ string Player::getName() {
     return _name;
 }
 
+void Player::addToHand(Card card) {
+    _hand.push_back(card);
+}
+
+void Player::addToHand(vector<Card> cards) {
+    for (int i=0;i<cards.size();i++) {
+        Card c = cards[i];
+        addToHand(c);
+    }
+}
+
+vector<Card> Player::getHand() {
+    return  _hand;
+}
+
 void Player::toString() {
-    cout << "Player: " << _name << endl;
+    
+    cout << "Player: " << _name ;
+    
+    if (_hand.size() > 0) {
+        cout << " **Hand:" ;
+        
+        string s = "";
+        for (int i=0;i<_hand.size();i++){
+            Card c = _hand[i];
+            s = s + " " + c.getSuitName() + " " + c.getValueString();
+        }
+        cout << s << endl;
+    } else {
+        cout << endl;
+    }
+    
 }

@@ -25,6 +25,8 @@ public:
     Team * getTeam2();
     void prepare();
     void start();
+    void firstDraw();
+    void secondDraw();
     void toString();
     
 private:
@@ -32,8 +34,9 @@ private:
     Team * _team1;
     Team * _team2;
     unsigned int const kNumberOfRounds = 10;
+    unsigned int const kNumberOfCardsPerDraw = 3;
     vector<PlayingRound> _rounds;
-    
+    void drawCards();
 };
 
 #endif /* Game_hpp */
