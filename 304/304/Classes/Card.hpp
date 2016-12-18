@@ -38,7 +38,6 @@ private:
     Suit _suit;
     Rank _rank;
     
-    
 };
 
 #endif /* Card_hpp */

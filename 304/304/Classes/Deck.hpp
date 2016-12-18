@@ -17,9 +17,10 @@ using namespace std;
 
 class Deck {
 public:
-    void prepare(void);
-    void shuffle(void);
-    void printCards(void);
+    void prepare();
+    void shuffle();
+    void printCards();
+    void toString();
     
 private:
     int const kCardCount = 24;

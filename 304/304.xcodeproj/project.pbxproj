@@ -10,6 +10,11 @@
 		9808660A1DF4CFF600DB5925 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 980866091DF4CFF600DB5925 /* main.cpp */; };
 		980866121DF4D07800DB5925 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 980866101DF4D07800DB5925 /* Card.cpp */; };
 		980866151DF4D55300DB5925 /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 980866131DF4D55300DB5925 /* Deck.cpp */; };
+		98DAD1F31E054B7200D227BF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD1F11E054B7200D227BF /* Player.cpp */; };
+		98DAD1F91E054BDD00D227BF /* PlayingRound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD1F71E054BDD00D227BF /* PlayingRound.cpp */; };
+		98DAD1FC1E054BF200D227BF /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD1FA1E054BF200D227BF /* Game.cpp */; };
+		98DAD1FF1E054C6800D227BF /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD1FD1E054C6800D227BF /* Team.cpp */; };
+		98DAD2021E05733000D227BF /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD2001E05733000D227BF /* Object.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +36,17 @@
 		980866111DF4D07800DB5925 /* Card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Card.hpp; path = Classes/Card.hpp; sourceTree = "<group>"; };
 		980866131DF4D55300DB5925 /* Deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Deck.cpp; path = Classes/Deck.cpp; sourceTree = "<group>"; };
 		980866141DF4D55300DB5925 /* Deck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Deck.hpp; path = Classes/Deck.hpp; sourceTree = "<group>"; };
+		98DAD1F11E054B7200D227BF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
+		98DAD1F21E054B7200D227BF /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Player.hpp; path = Classes/Player.hpp; sourceTree = "<group>"; };
+		98DAD1F71E054BDD00D227BF /* PlayingRound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayingRound.cpp; path = Classes/PlayingRound.cpp; sourceTree = "<group>"; };
+		98DAD1F81E054BDD00D227BF /* PlayingRound.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PlayingRound.hpp; path = Classes/PlayingRound.hpp; sourceTree = "<group>"; };
+		98DAD1FA1E054BF200D227BF /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Game.cpp; path = Classes/Game.cpp; sourceTree = "<group>"; };
+		98DAD1FB1E054BF200D227BF /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Game.hpp; path = Classes/Game.hpp; sourceTree = "<group>"; };
+		98DAD1FD1E054C6800D227BF /* Team.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Team.cpp; path = Classes/Team.cpp; sourceTree = "<group>"; };
+		98DAD1FE1E054C6800D227BF /* Team.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Team.hpp; path = Classes/Team.hpp; sourceTree = "<group>"; };
+		98DAD2001E05733000D227BF /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = Classes/Object.cpp; sourceTree = "<group>"; };
+		98DAD2011E05733000D227BF /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Object.hpp; path = Classes/Object.hpp; sourceTree = "<group>"; };
+		98DAD2031E05D8DB00D227BF /* 304rules.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 304rules.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +63,7 @@
 		980865FD1DF4CFF500DB5925 = {
 			isa = PBXGroup;
 			children = (
+				98DAD2031E05D8DB00D227BF /* 304rules.txt */,
 				980866081DF4CFF600DB5925 /* 304 */,
 				980866071DF4CFF600DB5925 /* Products */,
 			);
@@ -64,10 +81,20 @@
 			isa = PBXGroup;
 			children = (
 				980866091DF4CFF600DB5925 /* main.cpp */,
+				98DAD2001E05733000D227BF /* Object.cpp */,
+				98DAD2011E05733000D227BF /* Object.hpp */,
 				980866101DF4D07800DB5925 /* Card.cpp */,
 				980866111DF4D07800DB5925 /* Card.hpp */,
 				980866131DF4D55300DB5925 /* Deck.cpp */,
 				980866141DF4D55300DB5925 /* Deck.hpp */,
+				98DAD1F11E054B7200D227BF /* Player.cpp */,
+				98DAD1F21E054B7200D227BF /* Player.hpp */,
+				98DAD1FD1E054C6800D227BF /* Team.cpp */,
+				98DAD1FE1E054C6800D227BF /* Team.hpp */,
+				98DAD1F71E054BDD00D227BF /* PlayingRound.cpp */,
+				98DAD1F81E054BDD00D227BF /* PlayingRound.hpp */,
+				98DAD1FA1E054BF200D227BF /* Game.cpp */,
+				98DAD1FB1E054BF200D227BF /* Game.hpp */,
 			);
 			path = 304;
 			sourceTree = "<group>";
@@ -129,9 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DAD1F31E054B7200D227BF /* Player.cpp in Sources */,
 				980866151DF4D55300DB5925 /* Deck.cpp in Sources */,
+				98DAD2021E05733000D227BF /* Object.cpp in Sources */,
 				9808660A1DF4CFF600DB5925 /* main.cpp in Sources */,
+				98DAD1FC1E054BF200D227BF /* Game.cpp in Sources */,
 				980866121DF4D07800DB5925 /* Card.cpp in Sources */,
+				98DAD1F91E054BDD00D227BF /* PlayingRound.cpp in Sources */,
+				98DAD1FF1E054C6800D227BF /* Team.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +290,7 @@
 				9808660F1DF4CFF600DB5925 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

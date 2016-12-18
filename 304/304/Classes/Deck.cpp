@@ -62,14 +62,10 @@ void Deck::prepare(void) {
     addCards(diamonds);
     addCards(clubs);
     
-    std::cout << "Card count in the deck " << _cards.size() << "\n\n"<< endl;
-    
 }
 
 void Deck::shuffle(void) {
-    //std::random_shuffle(_cards.begin(),_cards.end(), myrandom);
     _shuffle(_cards);
-    
 }
 
 void Deck::printCards() {
@@ -81,3 +77,6 @@ void Deck::printCards() {
     }
 }
 
+void Deck::toString() {
+    std::cout << "Card count in the deck " << _cards.size() << "\n"<< endl;
+}
