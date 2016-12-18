@@ -20,18 +20,19 @@ using namespace std;
 class Player  {
     
 public:
-    Player(string name);
+    Player(string name, unsigned short seatingPosition);
     ~Player();
     string getName();
     void addToHand(Card card);
     void addToHand(vector<Card> cards);
     vector<Card> getHand();
-    
+    unsigned short getSeatingPosition();
     void toString();
     
 private:
     string _name;
     vector<Card> _hand;
+    unsigned short _seatingPosition;
     
 };
 #endif /* Player_hpp */

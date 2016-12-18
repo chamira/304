@@ -94,7 +94,7 @@ vector<Card> Deck::draw(int numberOfCards) {
     
     _cards.erase(_cards.begin(), _cards.begin() + numberOfCards);
     
-    std::cout << "Cards vector contains:" << _cards.size() << endl;
+    //std::cout << "Cards vector contains:" << _cards.size() << endl;
     return cards;
     
 }

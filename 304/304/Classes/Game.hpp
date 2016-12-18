@@ -24,19 +24,26 @@ public:
     Team * getTeam1();
     Team * getTeam2();
     void prepare();
-    void start();
+    void start(short round);
+    void setSeating();
     void firstDraw();
     void secondDraw();
+    Player * dealer();
+    unsigned short getRoundCounter();
     void toString();
     
 private:
+    unsigned int const kNumberOfRounds = 10;
+    unsigned int const kNumberOfCardsPerDraw = 3;
     Deck * _deck;
     Team * _team1;
     Team * _team2;
-    unsigned int const kNumberOfRounds = 10;
-    unsigned int const kNumberOfCardsPerDraw = 3;
-    vector<PlayingRound> _rounds;
+    vector<Player *> _seating;
+    Player * _dealer;
+    short _rountCounter;
     void drawCards();
+    Player * getPlayerAtSeatingPosition(unsigned short seatingPosition);
+    unsigned short getValidatedSeatingPositing(unsigned short position);
 };
 
 #endif /* Game_hpp */

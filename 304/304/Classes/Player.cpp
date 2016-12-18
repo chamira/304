@@ -10,11 +10,13 @@
 #include <iostream>
 #include <string>
 
-Player::Player(string name) {
+Player::Player(string name, unsigned short seatingPosition) {
     _name = name;
+    _seatingPosition = seatingPosition;
 }
 
 Player::~Player() {
+    
 }
 
 string Player::getName() {
@@ -34,6 +36,10 @@ void Player::addToHand(vector<Card> cards) {
 
 vector<Card> Player::getHand() {
     return  _hand;
+}
+
+unsigned short Player::getSeatingPosition() {
+    return _seatingPosition;
 }
 
 void Player::toString() {

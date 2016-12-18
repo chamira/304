@@ -19,21 +19,21 @@ int main(int argc, const char * argv[]) {
     Deck * deck = new Deck();
     
 
-    Player * player1 = new Player("Chamira");
-    Player * player2 = new Player("Nilu");
+    Player * player1 = new Player("Chamira",1);
+    Player * player2 = new Player("Nilu",2);
     
     Team * team1 = new Team("Suriyans", player1, player2);
 
-    Player * player3 = new Player("Susiri");
-    Player * player4 = new Player("Nadi");
+    Player * player3 = new Player("Susiri",3);
+    Player * player4 = new Player("Nadi",4);
     
     Team * team2 = new Team("Mayans", player3, player4);
     
     Game *game  = new Game(deck, team1, team2);
     
-    game->start();
+    game->start(12);
     game->toString();
-    
+
     /*deck.prepare();
     deck.shuffle();
     deck.printCards();
