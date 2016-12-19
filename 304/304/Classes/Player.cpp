@@ -9,6 +9,14 @@
 #include "Player.hpp"
 #include <iostream>
 #include <string>
+#include <algorithm>
+
+template <typename T>
+void remove(std::vector<T>& vec, size_t pos) {
+    typename std::vector<T>::iterator it = vec.begin();
+    std::advance(it, pos);
+    vec.erase(it);
+}
 
 Player::Player(string name, unsigned short seatingPosition) {
     _name = name;
@@ -42,6 +50,34 @@ unsigned short Player::getSeatingPosition() {
     return _seatingPosition;
 }
 
+Card * Player::getCardWithCode(string cardCode) {
+ 
+    Card *c = nullptr;
+    
+    size_t size = _hand.size();
+    
+    transform(cardCode.begin(), cardCode.end(), cardCode.begin(), ::toupper);
+    
+    short index = -1;
+    for (short i=0;i<size;i++){
+        Card card = _hand[i];
+        string code = card.getCode();
+        if (code == cardCode) {
+            c = &card;
+            index = i;
+            break;
+        }
+    }
+    
+    if (c != nullptr && index >= 0) {
+        remove(_hand,index);
+    }
+    
+    toString();
+    return c;
+    
+}
+
 void Player::toString() {
     
     cout << "Player: " << _name ;
@@ -52,7 +88,7 @@ void Player::toString() {
         string s = "";
         for (int i=0;i<_hand.size();i++){
             Card c = _hand[i];
-            s = s + " " + c.getSuitName() + " " + c.getValueString();
+            s = s + " " + c.getSuitName() + " " + c.getValueString() + " code: " + c.getCode() + " " + to_string(c.getHash());
         }
         cout << s << endl;
     } else {

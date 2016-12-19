@@ -31,9 +31,10 @@ public:
     Rank getRank();
     int getValue();
     string getValueString();
-    void toString();
     unsigned long getHash();
-    
+    string getCode();
+    void toString();
+
 private:
     Suit _suit;
     Rank _rank;

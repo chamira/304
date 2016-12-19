@@ -27,6 +27,7 @@ public:
     void addToHand(vector<Card> cards);
     vector<Card> getHand();
     unsigned short getSeatingPosition();
+    Card * getCardWithCode(string cardCode);
     void toString();
     
 private:

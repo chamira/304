@@ -7,10 +7,13 @@
 //
 
 #include <iostream>
+#include <string>
 #include "Deck.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
 #include "Team.hpp"
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -31,9 +34,46 @@ int main(int argc, const char * argv[]) {
     
     Game *game  = new Game(deck, team1, team2);
     
-    game->start(12);
+    game->start(1);
     game->toString();
 
+    Player *currentPlayer = game->getCurrentPlayer();
+    
+    int bid;
+    std::string cardCode;
+    std::cout << "Bid value? ";
+    std::cin >> bid;
+    
+    std::cout << "Card? ";
+    cin >> cardCode;
+    
+    Card *card = currentPlayer->getCardWithCode(cardCode);
+    
+    if (card != nullptr) {
+        cout << "trump ";
+        card->toString();
+    } else {
+        cout << "card is null";
+    }
+    
+    std::cout << "\nCard2? ";
+    cin >> cardCode;
+    
+    Card * card2 = currentPlayer->getCardWithCode(cardCode);
+    
+    
+    cout << "trump 2";
+    card2->toString();
+
+    
+    std::cout << "Card3? ";
+    cin >> cardCode;
+    
+    Card * card3 = currentPlayer->getCardWithCode(cardCode);
+    
+    cout << "trump 3";
+    card3->toString();
+    
     /*deck.prepare();
     deck.shuffle();
     deck.printCards();

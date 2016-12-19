@@ -36,6 +36,7 @@ void Game::prepare() {
 
     _deck->prepare();
     _deck->shuffle();
+    //_deck->printCards();
     
 }
 
@@ -54,8 +55,13 @@ void Game::start(short round) {
         return;
     }
     _rountCounter = round;
+    _playingPosition = 1;
+    
     prepare();
+    setPlayingSequence();
     firstDraw();
+    //secondDraw();
+    _deck->toString();
 }
 
 void Game::firstDraw() {
@@ -78,12 +84,22 @@ Team * Game::getTeam2() {
     return _team2;
 }
 
-Player * Game::dealer() {
+Player * Game::getDealer() {
     return _dealer;
 }
 
 unsigned short Game::getRoundCounter() {
     return _rountCounter;
+}
+
+void Game::setBidValue(Player * player, Card * trump, BidValue value) {
+    _bidder = player;
+    _trump = trump;
+    _bidValue = value;
+}
+
+Player * Game::getCurrentPlayer() {
+    return _playingSequence[_playingPosition-1];
 }
 
 void Game::toString() {
@@ -93,7 +109,8 @@ void Game::toString() {
 
 
 //Private
-void Game::drawCards() {
+
+void Game::setPlayingSequence() {
     
     unsigned short dealerSeatingPosition = getValidatedSeatingPositing(_rountCounter % 4);
     
@@ -110,8 +127,21 @@ void Game::drawCards() {
     
     Player * p4 = _dealer;
     
-    vector<Card> d1 = _deck->draw(kNumberOfCardsPerDraw);
+    _playingSequence.push_back(p1);
+    _playingSequence.push_back(p2);
+    _playingSequence.push_back(p3);
+    _playingSequence.push_back(p4);
     
+}
+
+void Game::drawCards() {
+    
+    Player * p1 = _playingSequence[0];
+    Player * p2 = _playingSequence[1];
+    Player * p3 = _playingSequence[2];
+    Player * p4 = _playingSequence[3];
+    
+    vector<Card> d1 = _deck->draw(kNumberOfCardsPerDraw);
     p1->addToHand(d1);
     
     vector<Card> d2 = _deck->draw(kNumberOfCardsPerDraw);
