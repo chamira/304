@@ -21,7 +21,6 @@ int main(int argc, const char * argv[]) {
     
     Deck * deck = new Deck();
     
-
     Player * player1 = new Player("Chamira",1);
     Player * player2 = new Player("Nilu",2);
     
@@ -55,24 +54,6 @@ int main(int argc, const char * argv[]) {
     } else {
         cout << "card is null";
     }
-    
-    std::cout << "\nCard2? ";
-    cin >> cardCode;
-    
-    Card * card2 = currentPlayer->getCardWithCode(cardCode);
-    
-    
-    cout << "trump 2";
-    card2->toString();
-
-    
-    std::cout << "Card3? ";
-    cin >> cardCode;
-    
-    Card * card3 = currentPlayer->getCardWithCode(cardCode);
-    
-    cout << "trump 3";
-    card3->toString();
     
     /*deck.prepare();
     deck.shuffle();
