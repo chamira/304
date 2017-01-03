@@ -205,5 +205,5 @@ string Card::getCode() {
 }
 
 void Card::toString() {
-    std::cout << "Card:" << getSuitName() << " Rank:" << getValueString() << " hash:"<< getHash() << std::endl;
+    std::cout << "Card:" << this->getSuitName() << " Rank:" << this->getValueString() << " hash:"<< this->getHash() << std::endl;
 }

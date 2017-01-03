@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "Card.hpp"
+#include "Brain.hpp"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ private:
     string _name;
     vector<Card> _hand;
     unsigned short _seatingPosition;
+	Brain _brain;
     
 };
 #endif /* Player_hpp */
