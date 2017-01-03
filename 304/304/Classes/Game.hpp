@@ -53,7 +53,7 @@ private:
     vector<Player *> _seating;
     vector<Player *> _playingSequence;
     Player * _dealer;
-    short _rountCounter;
+    short _roundCounter;
     short _playingPosition;
     void setPlayingSequence();
     void drawCards();

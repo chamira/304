@@ -54,7 +54,7 @@ void Game::start(short round) {
         cout << "Round value must be greater than 0\n";
         return;
     }
-    _rountCounter = round;
+    _roundCounter = round;
     _playingPosition = 1;
     
     prepare();
@@ -89,7 +89,7 @@ Player * Game::getDealer() {
 }
 
 unsigned short Game::getRoundCounter() {
-    return _rountCounter;
+    return _roundCounter;
 }
 
 void Game::setBidValue(Player * player, Card * trump, BidValue value) {
@@ -112,7 +112,7 @@ void Game::toString() {
 
 void Game::setPlayingSequence() {
     
-    unsigned short dealerSeatingPosition = getValidatedSeatingPositing(_rountCounter % 4);
+    unsigned short dealerSeatingPosition = getValidatedSeatingPositing(_roundCounter % 4);
     
     _dealer = getPlayerAtSeatingPosition(dealerSeatingPosition);
     
