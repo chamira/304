@@ -12,6 +12,12 @@ Team::Team(string name, Player * player1, Player * player2) {
     _name = name;
     _player1 = player1;
     _player2 = player2;
+	
+	_player1->setPartner(_player2);
+	_player2->setPartner(_player1);
+	
+	_player1->setTeam(this);
+	_player2->setTeam(this);
 }
 
 Team::~Team() {

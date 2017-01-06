@@ -31,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		538651F61E1F9F7A00C0FE68 /* Umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Umbrella.h; sourceTree = "<group>"; };
 		53EAA0BE1E1BA1C100926B63 /* Brain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brain.cpp; path = Classes/Brain.cpp; sourceTree = "<group>"; };
 		53EAA0BF1E1BA1C100926B63 /* Brain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Brain.hpp; path = Classes/Brain.hpp; sourceTree = "<group>"; };
 		980866061DF4CFF600DB5925 /* 304 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 304; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +101,7 @@
 				98DAD1F81E054BDD00D227BF /* PlayingRound.hpp */,
 				53EAA0BE1E1BA1C100926B63 /* Brain.cpp */,
 				53EAA0BF1E1BA1C100926B63 /* Brain.hpp */,
+				538651F61E1F9F7A00C0FE68 /* Umbrella.h */,
 			);
 			path = 304;
 			sourceTree = "<group>";

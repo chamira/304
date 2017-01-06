@@ -49,7 +49,7 @@ private:
     Player *_bidder;
     Card *_trump;
     
-    short _bidValue;
+    short _bidValue = 0;
     
     vector<Player *> _seating;
     vector<Player *> _playingSequence;
@@ -61,7 +61,8 @@ private:
     Player * getPlayerAtSeatingPosition(unsigned short seatingPosition);
     unsigned short getValidatedSeatingPositing(unsigned short position);
 	void startBidding();
-	Bid * getBidFromPlayer(Player * player);
+	Bid getBidFromPlayer(Player * player);
+	Player * getNextPlayerToBid(Player *bidPlayer, short currentBidValue);
 	
 };
 

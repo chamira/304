@@ -32,7 +32,7 @@ string Card::getSuitName() {
 	
     string s = "";
     
-    switch (getSuit()) {
+    switch (_suit) {
         case hearts:
             s = "Hearts";
             break;

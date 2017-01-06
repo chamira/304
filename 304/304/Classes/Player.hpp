@@ -16,7 +16,10 @@
 #include "Card.hpp"
 #include "Brain.hpp"
 
+
 using namespace std;
+
+class Team;
 
 class Player  {
     
@@ -29,12 +32,18 @@ public:
     vector<Card *> getHand();
     unsigned short getSeatingPosition();
     Card * getCardWithCode(string cardCode);
+	void setPartner(Player *player);
+	Player * getPartner();
+	void setTeam(Team *team);
+	Team * getTeam();
     void toString();
-    
+
 private:
     string _name;
     vector<Card *> _hand;
     unsigned short _seatingPosition;
+	Player * _partner;
+	Team * _team;
 	Brain _brain;
     
 };

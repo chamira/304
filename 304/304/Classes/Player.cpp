@@ -77,9 +77,25 @@ Card * Player::getCardWithCode(string cardCode) {
     
 }
 
+void Player::setPartner(Player *player) {
+	_partner = player;
+}
+
+Player * Player::getPartner() {
+	return _partner;
+}
+
+void Player::setTeam(Team *team) {
+	_team = team;
+}
+
+Team * Player::getTeam() {
+	return _team;
+}
+
 void Player::toString() {
     
-    cout << "Player: " << _name ;
+    cout << "Player: " << _name  << " Sitting at " << getSeatingPosition();
     
     if (_hand.size() > 0) {
         cout << " **Hand:" ;

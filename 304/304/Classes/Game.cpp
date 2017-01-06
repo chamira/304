@@ -96,15 +96,26 @@ unsigned short Game::getRoundCounter() {
 }
 
 void Game::setBidValue(Player * player, Bid * bid) {
+	
+	short value = bid->value;
+	
+	if (value <= _bidValue) {
+		cout << "Illegal bid value of " << value << endl;
+		return;
+	}
+
+	if (_bidder != NULL) {
+		_bidder->addToHand(_trump);
+	}
+	
+	_bidValue = value;
+	
     _bidder = player;
 	
 	Card *trump = bid->trump;
 	_trump = trump;
-	
-	short value = bid->value;
-    _bidValue = value;
-	
-	cout << "Final bid by -> " << _bidder->getName() << " value ->" << _bidValue << " trump " << _trump->getSuitName() << " " << endl;
+
+	cout << "Bid by -> " << _bidder->getName() << " value ->" << _bidValue << " trump " << _trump->getSuitName() << " " << endl;
 	
 }
 
@@ -197,10 +208,10 @@ bool isValidBidValue(short value) {
 	return pass;
 }
 
-// -1 = yet to bid, 0 = no bid , 1 = ask parter
+// -1 = yet to bid, 0 = no bid , 1 = ask parter, 2 = not enough cards to bid (i.e q,k)
 bool isSignalValue(short value) {
-	const short sCount = 3;
-	short bidValues [sCount] = { -1, 0, 1 };
+	const short sCount = 4;
+	short bidValues [sCount] = { -1, 0, 1, 2 };
 	bool pass = false;
 	for (short i = 0; i < sCount; i++){
 		short v = bidValues[i];
@@ -214,13 +225,13 @@ bool isSignalValue(short value) {
 
 }
 
-Bid * Game::getBidFromPlayer(Player * player) {
+Bid Game::getBidFromPlayer(Player * player) {
 	
 	short bid = -1;
 	std::string cardCode;
 	bool pass = false;
 	
-	cout<< "Current Bidder:";
+	cout<< "Current Bidder: ";
 	player->toString();
 	cout << endl;
 	
@@ -237,8 +248,8 @@ Bid * Game::getBidFromPlayer(Player * player) {
 		
 	}
 	
-	Bid *b = new Bid();
-	b->value = bid;
+	Bid b;
+	b.value = bid;
 	
 	if (isSignalValue(bid) == false) {
 		Card *card = nullptr;
@@ -247,7 +258,7 @@ Bid * Game::getBidFromPlayer(Player * player) {
 			std::cout << "Card? ";
 			cin >> cardCode;
 			card = player->getCardWithCode(cardCode);
-			b->trump = card;
+			b.trump = card;
 		}
 	}
 	
@@ -255,16 +266,67 @@ Bid * Game::getBidFromPlayer(Player * player) {
 	
 }
 
-void Game::startBidding() {
+Player * Game::getNextPlayerToBid(Player *bidPlayer ,short currentBidValue) {
 	
-	Player *currentPlayer = getCurrentPlayer();
-	Bid *bid = getBidFromPlayer(currentPlayer);
+	Player *player = nullptr;
 	
-	if (bid->value == 120) {
+	if (currentBidValue == -1) {
+		player = getCurrentPlayer(); // no bid yet
+	} else if (currentBidValue == 1) { //pass to partner
+		Player *currentPlayer = getCurrentPlayer();
+		player = currentPlayer->getPartner();
+	} else if (currentBidValue == 2){ // partner is not able to bid either
+		player = nullptr;
+	} else if (currentBidValue == 120) {
+		player = bidPlayer;
+	} else {
 		
-		setBidValue(currentPlayer, bid);
-		currentPlayer->toString();
+		short position = bidPlayer->getSeatingPosition();
+		if (position == 4) {
+			position = 1;
+		} else {
+			position++;
+		}
+		
+		player = getPlayerAtSeatingPosition(position);
+		
 	}
 	
+	return player;
+}
+
+void Game::startBidding() {
+	
+	bool isBiddingDone = false;
+	
+	Player *currentPlayer = getCurrentPlayer();
+	
+	Bid bid;
+	Player *nextPlayer = currentPlayer;
+	
+	while (isBiddingDone == false) {
+		
+		bid = getBidFromPlayer(nextPlayer);
+		setBidValue(nextPlayer, &bid);
+		Player *player = getNextPlayerToBid(nextPlayer, bid.value);
+		
+		if (player == nullptr) {
+			isBiddingDone = true;
+			cout << "Partner is not able to bid either end of round " << _roundCounter << endl;
+			break;
+		} else if (player == currentPlayer) {
+		
+			isBiddingDone = true;
+			
+		} else {
+			if (player == nextPlayer->getPartner()) {
+				cout << "Ask partner to bid " <<endl;
+			}
+			isBiddingDone = false;
+			nextPlayer = player;
+		}
+	}
+	
+	secondDraw();
 	
 }
