@@ -12,3 +12,7 @@
 #include <stdio.h>
 
 #endif /* Brain_hpp */
+
+class Brain {
+	
+};

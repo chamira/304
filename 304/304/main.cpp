@@ -36,46 +36,7 @@ int main(int argc, const char * argv[]) {
     game->start(1);
     game->toString();
 
-    Player *currentPlayer = game->getCurrentPlayer();
-	
-	short bidValues [8] = { 50, 60, 70, 80, 90, 100, 110, 120 };
-	
-    short bid = 0;
-	std::string cardCode;
-	bool pass = false;
-	
-	cout<< "Current player";
-	currentPlayer->toString();
-	cout << endl;
-	while (pass == false) {
-		
-		std::cout << "Bid value? ";
-		std::cin >> bid;
-		for (short i = 0; i < 8; i++){
-			short v = bidValues[i];
-			if (v == bid) {
-				pass = true;
-				break;
-			}
-		}
-	}
-	
-	Card *card = nullptr;
-	
-	while (card == nullptr){
-		std::cout << "Card? ";
-		cin >> cardCode;
-		card = currentPlayer->getCardWithCode(cardCode);
-		
-	}
-	
-    
-    if (card != nullptr) {
-        cout << "trump ";
-		cout << card->getSuitName() << "\n";
-    } else {
-        cout << "card is null";
-    }
+
     
     /*deck.prepare();
     deck.shuffle();

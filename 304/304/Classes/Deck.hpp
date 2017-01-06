@@ -21,12 +21,12 @@ public:
     void prepare();
     void shuffle();
     void printCards();
-    vector<Card> draw(int numberOfCards);
+    vector<Card*> draw(short numberOfCards);
     void toString();
     
 private:
-    int const kCardCount = 24;
-    vector<Card> _cards;
+    short const kCardCount = 24;
+    vector<Card*> _cards;
     void addCards(Suit suit);
     
 };

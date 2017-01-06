@@ -15,9 +15,11 @@
 #include "PlayingRound.hpp"
 #include <vector>
 
-typedef enum {
-    fifty=50,sixty=60,seventy=70,eighty=80,ninety=90,hundred=100,oneten=110,onetwenty=130
-}BidValue;
+struct Bid {
+	short value;
+	Card * trump;
+};
+
 
 class Game {
 
@@ -35,10 +37,9 @@ public:
     Player * getDealer();
     Player * getCurrentPlayer();
     unsigned short getRoundCounter();
-    void setBidValue(Player * player, Card * trump, BidValue value);
+    void setBidValue(Player * player, Bid * bid);
     void toString();
-    
-    
+
 private:
     unsigned int const kNumberOfRounds = 10;
     unsigned int const kNumberOfCardsPerDraw = 3;
@@ -48,7 +49,7 @@ private:
     Player *_bidder;
     Card *_trump;
     
-    BidValue _bidValue;
+    short _bidValue;
     
     vector<Player *> _seating;
     vector<Player *> _playingSequence;
@@ -59,6 +60,9 @@ private:
     void drawCards();
     Player * getPlayerAtSeatingPosition(unsigned short seatingPosition);
     unsigned short getValidatedSeatingPositing(unsigned short position);
+	void startBidding();
+	Bid * getBidFromPlayer(Player * player);
+	
 };
 
 #endif /* Game_hpp */

@@ -18,7 +18,7 @@ Deck::~Deck() {
     
 }
 // random generator function:
-void _shuffle(vector<Card> &a) {
+void _shuffle(vector<Card *> &a) {
     size_t n = a.size();
     if (n <= 1){
         return;
@@ -37,12 +37,12 @@ void _shuffle(vector<Card> &a) {
 
 void Deck::addCards(Suit suit) {
 
-    Card cardJack(suit, jack);
-    Card cardNine(suit, nine);
-    Card cardAce(suit, ace);
-    Card cardTen(suit, ten);
-    Card cardKing(suit, king);
-    Card cardQueen(suit, queen);
+    Card *cardJack  = new Card(suit, jack);
+    Card *cardNine  = new Card(suit, nine);
+    Card *cardAce   = new Card(suit, ace);
+    Card *cardTen   = new Card(suit, ten);
+    Card *cardKing  = new Card(suit, king);
+    Card *cardQueen = new Card(suit, queen);
     
     _cards.push_back(cardJack);
     _cards.push_back(cardNine);
@@ -73,22 +73,22 @@ void Deck::shuffle(void) {
 void Deck::printCards() {
     
     size_t size = _cards.size();
-    for (int i=0;i<size;i++){
-        Card c = _cards[i];
-        c.toString();
+    for (short i=0;i<size;i++){
+        Card *c = _cards[i];
+        c->toString();
     }
 }
 
-vector<Card> Deck::draw(int numberOfCards) {
+vector<Card*> Deck::draw(short numberOfCards) {
     
     size_t size = _cards.size();
     if (size == 0 || size < numberOfCards) {
-        return vector<Card>();
+        return vector<Card*>();
     }
     
-    vector<Card> cards;
+    vector<Card*> cards;
     for (int i=0;i<numberOfCards;i++){
-        Card c = _cards[i];
+        Card *c = _cards[i];
         cards.push_back(c);
     }
     

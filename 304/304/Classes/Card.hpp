@@ -15,7 +15,7 @@
 using namespace std;
 
 typedef enum {
-    spades, hearts, diamonds, clubs
+    spades=1, hearts=2, diamonds=3, clubs=4
 } Suit;
 
 typedef enum {
@@ -26,6 +26,7 @@ class Card {
 
 public:
     Card(Suit suit, Rank rank);
+	~Card();
     Suit getSuit();
     string getSuitName();
     Rank getRank();

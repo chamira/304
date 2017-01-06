@@ -16,15 +16,23 @@ Card::Card(Suit suit, Rank rank) {
     
 }
 
+Card::~Card() {
+	cout << "Dealloc card " << getSuitName() << " " << getRank() << "\n";
+}
+
 Suit Card::getSuit() {
     return _suit;
 }
 
+Rank Card::getRank() {
+	return _rank;
+}
+
 string Card::getSuitName() {
-    
+	
     string s = "";
     
-    switch (_suit) {
+    switch (getSuit()) {
         case hearts:
             s = "Hearts";
             break;
@@ -38,15 +46,12 @@ string Card::getSuitName() {
             s = "Clubs";
             break;
         default:
+			s = "nothing";
             break;
     }
-    
+	
     return s;
     
-}
-
-Rank Card::getRank() {
-    return _rank;
 }
 
 int Card::getValue() {

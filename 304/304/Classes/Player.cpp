@@ -31,18 +31,18 @@ string Player::getName() {
     return _name;
 }
 
-void Player::addToHand(Card card) {
+void Player::addToHand(Card *card) {
     _hand.push_back(card);
 }
 
-void Player::addToHand(vector<Card> cards) {
-    for (int i=0;i<cards.size();i++) {
-        Card c = cards[i];
+void Player::addToHand(vector<Card*> cards) {
+    for (short i=0;i<cards.size();i++) {
+        Card *c = cards[i];
         addToHand(c);
     }
 }
 
-vector<Card> Player::getHand() {
+vector<Card*> Player::getHand() {
     return  _hand;
 }
 
@@ -60,10 +60,10 @@ Card * Player::getCardWithCode(string cardCode) {
     
     short index = -1;
     for (short i=0;i<size;i++){
-        Card card = _hand[i];
-        string code = card.getCode();
+        Card *card = _hand[i];
+        string code = card->getCode();
         if (code == cardCode) {
-            c = &card;
+            c = card;
             index = i;
             break;
         }
@@ -72,8 +72,7 @@ Card * Player::getCardWithCode(string cardCode) {
     if (c != nullptr && index >= 0) {
         remove(_hand,index);
     }
-    
-    toString();
+	
     return c;
     
 }
@@ -87,8 +86,8 @@ void Player::toString() {
         
         string s = "";
         for (int i=0;i<_hand.size();i++){
-            Card c = _hand[i];
-            s = s + " " + c.getSuitName() + " " + c.getValueString() + " code: " + c.getCode() + " " + to_string(c.getHash());
+            Card * c = _hand[i];
+            s = s + " " + c->getSuitName() + " " + c->getValueString() + " code: " + c->getCode() + " " + to_string(c->getHash());
         }
         cout << s << endl;
     } else {

@@ -24,16 +24,16 @@ public:
     Player(string name, unsigned short seatingPosition);
     ~Player();
     string getName();
-    void addToHand(Card card);
-    void addToHand(vector<Card> cards);
-    vector<Card> getHand();
+    void addToHand(Card * card);
+    void addToHand(vector<Card*> cards);
+    vector<Card *> getHand();
     unsigned short getSeatingPosition();
     Card * getCardWithCode(string cardCode);
     void toString();
     
 private:
     string _name;
-    vector<Card> _hand;
+    vector<Card *> _hand;
     unsigned short _seatingPosition;
 	Brain _brain;
     
