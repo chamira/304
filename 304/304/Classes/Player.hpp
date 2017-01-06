@@ -17,6 +17,12 @@
 #include "Brain.hpp"
 
 
+struct Bid {
+	short value;
+	Card * trump;
+};
+
+
 using namespace std;
 
 class Team;
@@ -36,6 +42,8 @@ public:
 	Player * getPartner();
 	void setTeam(Team *team);
 	Team * getTeam();
+	void setBid(Bid bid);
+	Bid getBid();
     void toString();
 
 private:
@@ -45,6 +53,7 @@ private:
 	Player * _partner;
 	Team * _team;
 	Brain _brain;
+	Bid _bid;
     
 };
 #endif /* Player_hpp */

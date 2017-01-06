@@ -15,11 +15,6 @@
 #include "PlayingRound.hpp"
 #include <vector>
 
-struct Bid {
-	short value;
-	Card * trump;
-};
-
 
 class Game {
 
@@ -60,7 +55,7 @@ private:
     void drawCards();
     Player * getPlayerAtSeatingPosition(unsigned short seatingPosition);
     unsigned short getValidatedSeatingPositing(unsigned short position);
-	void startBidding();
+	short startBidding();
 	Bid getBidFromPlayer(Player * player);
 	Player * getNextPlayerToBid(Player *bidPlayer, short currentBidValue);
 	

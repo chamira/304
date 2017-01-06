@@ -93,6 +93,14 @@ Team * Player::getTeam() {
 	return _team;
 }
 
+void Player::setBid(Bid bid) {
+	_bid = bid;
+}
+
+Bid Player::getBid() {
+	return _bid;
+}
+
 void Player::toString() {
     
     cout << "Player: " << _name  << " Sitting at " << getSeatingPosition();

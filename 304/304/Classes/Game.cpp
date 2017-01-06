@@ -7,6 +7,36 @@
 //
 
 #include "Game.hpp"
+bool isValidBidValue(short value) {
+	short bidValues [8] = { 50, 60, 70, 80, 90, 100, 110, 120 };
+	bool pass = false;
+	for (short i = 0; i < 8; i++){
+		short v = bidValues[i];
+		if (v == value) {
+			pass = true;
+			break;
+		}
+	}
+	
+	return pass;
+}
+
+// -1 = yet to bid, 0 = no bid , 1 = ask parter, 2 = not enough cards to bid (i.e q,k)
+bool isSignalValue(short value) {
+	const short sCount = 4;
+	short bidValues [sCount] = { -1, 0, 1, 2 };
+	bool pass = false;
+	for (short i = 0; i < sCount; i++){
+		short v = bidValues[i];
+		if (v == value) {
+			pass = true;
+			break;
+		}
+	}
+	
+	return pass;
+	
+}
 
 Game::Game(Deck * deck, Team * team1, Team  * team2) {
     
@@ -55,15 +85,27 @@ void Game::start(short round) {
         return;
     }
     _roundCounter = round;
-    _playingPosition = 1;
+	
+	short pos = round % 4;
+	if (pos == 0) {
+		pos = 4;
+	}
+    _playingPosition = pos;
     
     prepare();
     setPlayingSequence();
     firstDraw();
-    //secondDraw();
+	
     _deck->toString();
 	
-	startBidding();
+	short v = startBidding();
+	
+	if (v == 0) {
+		short x = round +  1;
+		start(x);
+	} else {
+		secondDraw();
+	}
 	
 }
 
@@ -99,11 +141,18 @@ void Game::setBidValue(Player * player, Bid * bid) {
 	
 	short value = bid->value;
 	
+	if (isSignalValue(value)) {
+		cout << "Signal value " << value << endl;
+		return;
+	}
+	
 	if (value <= _bidValue) {
 		cout << "Illegal bid value of " << value << endl;
 		return;
 	}
 
+
+	
 	if (_bidder != NULL) {
 		_bidder->addToHand(_trump);
 	}
@@ -194,37 +243,6 @@ Player * Game::getPlayerAtSeatingPosition(unsigned short seatingPosition) {
     return _seating[seatingPosition-1];
 }
 
-bool isValidBidValue(short value) {
-	short bidValues [8] = { 50, 60, 70, 80, 90, 100, 110, 120 };
-	bool pass = false;
-	for (short i = 0; i < 8; i++){
-		short v = bidValues[i];
-		if (v == value) {
-			pass = true;
-			break;
-		}
-	}
-	
-	return pass;
-}
-
-// -1 = yet to bid, 0 = no bid , 1 = ask parter, 2 = not enough cards to bid (i.e q,k)
-bool isSignalValue(short value) {
-	const short sCount = 4;
-	short bidValues [sCount] = { -1, 0, 1, 2 };
-	bool pass = false;
-	for (short i = 0; i < sCount; i++){
-		short v = bidValues[i];
-		if (v == value) {
-			pass = true;
-			break;
-		}
-	}
-	
-	return pass;
-
-}
-
 Bid Game::getBidFromPlayer(Player * player) {
 	
 	short bid = -1;
@@ -237,7 +255,7 @@ Bid Game::getBidFromPlayer(Player * player) {
 	
 	while (pass == false) {
 		
-		std::cout << "Bid value? ";
+		std::cout << "Bid value: " << player->getName() << "? ";
 		std::cin >> bid;
 		
 		if (isSignalValue(bid)) {
@@ -255,13 +273,14 @@ Bid Game::getBidFromPlayer(Player * player) {
 		Card *card = nullptr;
 		
 		while (card == nullptr){
-			std::cout << "Card? ";
+			std::cout << "Trump Card? ";
 			cin >> cardCode;
 			card = player->getCardWithCode(cardCode);
 			b.trump = card;
 		}
 	}
 	
+	player->setBid(b);
 	return b;
 	
 }
@@ -295,7 +314,7 @@ Player * Game::getNextPlayerToBid(Player *bidPlayer ,short currentBidValue) {
 	return player;
 }
 
-void Game::startBidding() {
+short Game::startBidding() {
 	
 	bool isBiddingDone = false;
 	
@@ -316,6 +335,7 @@ void Game::startBidding() {
 			break;
 		} else if (player == currentPlayer) {
 		
+			cout << "Bidding is done....\n";
 			isBiddingDone = true;
 			
 		} else {
@@ -327,6 +347,13 @@ void Game::startBidding() {
 		}
 	}
 	
-	secondDraw();
-	
+	short v = 1;
+	if (_bidder != nullptr) {
+		cout << "Round is belong to " << _bidder->getName() << " Trump " << _trump->getSuitName() << endl;
+	} else {
+		cout << "End of round \n\n\n";
+		return 0;
+	}
+
+	return v;
 }
